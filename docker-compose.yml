@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  prod:
+    container_name: demo-be
+    image: demo-be:1.0.0
+    build:
+      context: .
+      target: build
+      dockerfile: ./Dockerfile
+    command: npm run start:prod
+    ports:
+      - "3200:3200"
+      - "9229:9229"
+    volumes:
+      - /demo-be
+    restart: unless-stopped
